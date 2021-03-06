@@ -33,11 +33,10 @@ module ChangelogValidator
     end
 
     def check_for_title?(changelog)
-      heading_string = "## Unreleased\n\n"
-      heading_location = changelog.index(heading_string)
-      return false if heading_location.nil?
+      result = /##\s+(Unreleased)([\s\S]*?)(\n##\s+\d+\.\d+\.\d+|\Z)/im.match(changelog)
+      return true if result
 
-      true
+      false
     end
 
     private
