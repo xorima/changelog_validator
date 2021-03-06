@@ -33,10 +33,7 @@ module ChangelogValidator
     end
 
     def check_for_entry?(changelog)
-      result = /##\s+(Unreleased)([\s\S]*?)(\n##\s+\d+\.\d+\.\d+|\Z)/im.match(changelog)
-      return true if result
-
-      false
+      /##\s+(Unreleased)([\s\S]*?)(\n##\s+\d+\.\d+\.\d+|\Z)/im.match?(changelog)
     end
 
     private
