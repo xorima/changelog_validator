@@ -19,7 +19,7 @@ module ChangelogValidator
 
     def changelog_unreleased_entry?
       file = get_file_contents(@changelog_name)
-      check_for_title?(file['content'])
+      check_for_entry?(file['content'])
     end
 
     def status_check(state:)
@@ -29,15 +29,11 @@ module ChangelogValidator
                             @pull_request['head']['sha'],
                             state,
                             { context: 'Changelog Validator',
-                              description: "Checking the #{@changelog_name} has an entry called ## Unreleased" })
+                              description: "Checking the #{@changelog_name} has an entry under ## Unreleased" })
     end
 
-    def check_for_title?(changelog)
-      heading_string = "## Unreleased\n\n"
-      heading_location = changelog.index(heading_string)
-      return false if heading_location.nil?
-
-      true
+    def check_for_entry?(changelog)
+      /##\s+(Unreleased)([\s\S]*?)(\n##\s+\d+\.\d+\.\d+|\Z)/im.match?(changelog)
     end
 
     private

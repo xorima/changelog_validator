@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Check for content in the changelog up till the next heading which should start with a digit
+  - example: in `## 1.2.3` it will check for `## 1`
+
 ## 1.0.1 - *2020-11-18*
 
 - Fixed bug with dockerhub push due to set-env deprecation
