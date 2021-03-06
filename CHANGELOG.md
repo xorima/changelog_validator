@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 1.1.0 - *2021-03-06*
 
 - Check for content in the changelog up till the next heading which should start with a digit
   - example: in `## 1.2.3` it will check for `## 1`
