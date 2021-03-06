@@ -29,7 +29,7 @@ module ChangelogValidator
                             @pull_request['head']['sha'],
                             state,
                             { context: 'Changelog Validator',
-                              description: "Checking the #{@changelog_name} has an entry called ## Unreleased" })
+                              description: "Checking the #{@changelog_name} has an entry under ## Unreleased" })
     end
 
     def check_for_entry?(changelog)
